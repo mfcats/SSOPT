@@ -16,6 +16,7 @@
 import os
 from method import get_method
 from variables import Variables
+import subprocess as sp
 
 
 file_header = \
@@ -32,9 +33,17 @@ class Dakota():
         self.method = get_method(params)
         self.njobs = params['study']['njobs']
         self.variables = Variables(params)
+        self.restart = params['study']['restart']
 
     def run(self):
         self.generate_input_file()
+        dakota_command = ['dakota', '-i', 'dakota.in', '-o', 'dakota.log', '-w', 'dakota.rst', '-e', 'dakota.err']
+        if self.restart:
+            dakota_command.append(['-r', 'dakota.rst'])
+        with open(self.workdir + "/SSOPT.log", "w+") as logfile:
+            with open(self.workdir + "/SSOPT.err", 'w+') as errfile:
+                sp.Popen(dakota_command, cwd=self.workdir, stderr=errfile, stdout=logfile).wait()
+
 
     def generate_input_file(self):
         self.create_workdir()
@@ -56,7 +65,7 @@ class Dakota():
 
     def print_environment(self, inputfile):
         inputfile.writelines(["environment\n",
-                              "  tabulat_data\n",
+                              "  tabular_data\n",
                               "    tabular_data_file = '" + self.outputfile + "'\n\n"])
 
     @staticmethod
@@ -69,7 +78,7 @@ class Dakota():
                               "    analysis_driver = 'runiteration.py'\n",
                               "    work_directory\n",
                               "      named = './iteration'\n",
-                              "      copy_files = '0/' 'constant/ 'system/'\n",
+                              "      copy_files = '0/' 'constant/' 'system/'\n",
                               "      directory_tag\n",
                               "      directory_save\n",
                               "  failure_capture recover "])

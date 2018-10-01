@@ -25,6 +25,7 @@ study:
   remoteworkfolder: /work/mf521746/
   outputfile: parameter_stduy.dat
   njobs: 15
+  restart: false
 case:
   gclength: 0.464
   gcheight: 0.06
