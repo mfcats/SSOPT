@@ -1,0 +1,40 @@
+# Copyright 2018 Markus Frings (frings@cats.rwth-aachen.de)
+#
+# This file is part of SSOPT.
+#
+# SSOPT is free software: you can redistribute it and/or modify it under the terms of the GNU Lesser General Public
+# License as published by the Free Software Foundation version 3 of the License.
+#
+# SSOPT is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied
+# warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public License for more
+# details.
+#
+# You should have received a copy of the GNU Lesser General Public License along with SSOPT.  If not, see
+# <http://www.gnu.org/licenses/>.
+#
+
+study:
+  type: parameter
+  constraints:
+    amax: 400.0
+    tmax: 0.5
+  bounds:
+    tstart: [0.0, 0.0]
+    vmax: 2.0
+  partitions: [0, 30, 30]
+  remotemachine: claix
+  remoteworkfolder: /work/mf521746/
+  outputfile: parameter_stduy.dat
+  njobs: 15
+case:
+  gclength: 0.464
+  gcheight: 0.06
+  outputlength: 0.01
+  outputheight: 0.04
+  deltax: 0.02
+  fillingratio: 0.37
+  ncpus: 24
+  runtime: 240
+general:
+  name: test_study
+  workdir: /Users/frings/Documents/work/Thesis/testing/ssopt
