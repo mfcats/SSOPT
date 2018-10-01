@@ -19,9 +19,8 @@ study:
     amax: 400.0
     tmax: 0.5
   bounds:
-    tstart: [0.0, 0.0]
     vmax: 2.0
-  partitions: [0, 30, 30]
+  partitions: [30, 30]
   remotemachine: claix
   remoteworkfolder: /work/mf521746/
   outputfile: parameter_stduy.dat

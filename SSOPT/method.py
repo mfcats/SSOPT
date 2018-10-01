@@ -24,9 +24,8 @@ def get_method(params):
 
 class ParameterStudy():
     def __init__(self, params):
-        self.ntstart = params['study']['partitions'][0]
-        self.nsswitch = params['study']['partitions'][1]
-        self.nvfinal = params['study']['partitions'][2]
+        self.nsswitch = params['study']['partitions'][0]
+        self.nvfinal = params['study']['partitions'][1]
 
     def print_method(self, inputfile):
         inputfile.writelines(['method\n  multidim_parameter_study\n    partitions = ', str(self.nsswitch), ' ',

@@ -28,10 +28,6 @@ class Variables():
         self.sswitchmax = min(self.shot_curve.send, self.tmax * self.vmax - self.shot_curve.send)
         self.vfinalmax = min(self.vmax, self.tmax * self.vmax - self.shot_curve.send)
 
-    @property
-    def tstartmin(self):
-        return 0.0
-
     def print_variables(self, inputfile):
         inputfile.writelines(["variables\n",
                               "  continuous_design = 2\n",
