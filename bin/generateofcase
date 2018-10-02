@@ -1,3 +1,5 @@
+#! /usr/bin/env vtkpython
+
 # Copyright 2018 Markus Frings (frings@cats.rwth-aachen.de)
 #
 # This file is part of SSOPT.
@@ -13,7 +15,9 @@
 # <http://www.gnu.org/licenses/>.
 #
 
-__all__ = ["ssopt"]
+import sys
+import SSOPT
 
-import ssopt
-import openfoamcase
+if len(sys.argv) != 2:
+    raise IOError("Only the input file is required as argument!")
+SSOPT.openfoamcase.main(sys.argv[1])

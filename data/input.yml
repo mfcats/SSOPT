@@ -34,6 +34,7 @@ case:
   deltax: 0.02
   fillingratio: 0.37
   ncpus: 24
+  project: jara0185
   runtime: 240
 general:
   name: test_study

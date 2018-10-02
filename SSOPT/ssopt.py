@@ -14,7 +14,6 @@
 #
 
 import yaml
-
 from SSOPT.study import Study
 
 
